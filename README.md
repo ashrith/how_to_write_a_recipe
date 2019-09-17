@@ -144,7 +144,17 @@ class ExampleLogTransformer(CustomTransformer):
 		X_p_log = np.log10(X_pandas)
 		return X_p_log
 ```
-In the above example, we compose the `fit_transform` and `transform` for training and testing data, respectively. In the `fit_transform` the response variable `y` is available. Here our dataframe is named `X`. Now `X` will be transformed to pandas frame by using the `to_pandas()` function. Further, a `log10` of the column will be applied and returned. The `to_pandas()` function is described here for ease of understanding. A real-world implementation of log transformer is available at the following link [HyperLink to LogTransformer](https://github.com/h2oai/driverlessai-recipes/blob/master/transformers/numeric/log_transformer.py)
+In the above example, we compose the `fit_transform` and `transform` for training and testing data, respectively. In the `fit_transform` the response variable `y` is available. Here our dataframe is named `X`. Now `X` will be transformed to pandas frame by using the `to_pandas()` function. Further, a `log10` of the column will be applied and returned. The `to_pandas()` function is described here for ease of understanding. 
+
+```{python eval=FALSE}
+from h2oaicore.systemutils import segfault, loggerinfo, main_logger
+from h2oaicore.transformer_utils import CustomTransformer
+import datatable as dt
+import numpy as np
+import pandas as pd
+import logging
+```
+We, finally add the required library to the top of the `.py` file. The primary library required is `CustomTransformer`. `loggerinfo` and `main_logger` for house keeping. `datatable` and `pandas` for data handling. 
 
 7. This code is to be stored as a python code file - `example_transform.py`
 8. To ingest this code, one needs to first need to add dataset to be modeled upon into DriverlessAI. 
